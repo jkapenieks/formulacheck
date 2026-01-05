@@ -1,0 +1,106 @@
+/* Custom CSS for the assignsubmission_formulacheck plugin */
+
+/* --- Configuration Form Table Layout Fix (Teacher View) --- */
+
+.assignsubmission_formulacheck .form-config-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.assignsubmission_formulacheck .form-config-table th,
+.assignsubmission_formulacheck .form-config-table td {
+    padding: 5px 10px;
+    border: 1px solid #ccc; /* Optional: for visual separation */
+    vertical-align: top;
+}
+
+/* Ensure inputs fill the cell width */
+.assignsubmission_formulacheck .form-config-table input[type="text"] {
+    width: 100%;
+    max-width: 250px; /* Limit overall width if desired */
+    box-sizing: border-box;
+}
+
+.assignsubmission_formulacheck .form-config-table thead {
+    font-weight: bold;
+    background-color: #eee;
+}
+
+/* --- Student Submission View (for good measure) --- */
+.assignsubmission_formulacheck .mform fieldset.form-submission input[name^="assignsubmission_formulacheck_p"] {
+    max-width: 120px;
+}
+
+
+#id_submissionheadercontainer .row.fitem.femptylabel {
+    margin-top: 0rem !important;
+    margin-bottom: 2rem !important;
+}
+
+#id_submissionheadercontainer .row.fitem:not(.femptylabel) {
+   margin-bottom: 0rem !important;
+}
+
+/* .row.fitem {
+    margin-top: 2rem !important;
+} */
+
+/* --- Parameter Configuration Header Layout --- */
+
+/* 1. Force the custom header to span the full width of the form. */
+#id_submissiontypescontainer.formulacheck-param-header-wrapper {
+    /* MoodleQuickForm adds a display: flex to .fitem. Override it for the header */
+    display: block; 
+    margin-bottom: 0 !important; /* Tighten up with the rows below */
+    padding: 0; /* Remove default fitem padding */
+}
+
+/* 2. Target the felement area where the columns are placed. */
+#id_submissiontypescontainer .formulacheck-param-header-wrapper .felement {
+    /* Match the layout of the form rows (fitemtitle and felement) */
+    margin-left: 200px; /* Adjust this to match the width of the label column (fitemtitle) in your theme */
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    background-color: #f7f7f7; /* Visual distinction */
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 10px;
+}
+
+/* 3. Set the relative widths for the three header columns inside felement */
+#id_submissiontypescontainer .formulacheck-param-header-columns .header-label {
+    /* Takes the most space for the parameter label */
+    flex: 1 1 50%; 
+    min-width: 150px; 
+    padding-right: 10px;
+}
+
+#id_submissiontypescontainer .formulacheck-param-header-columns .header-min,
+#id_submissiontypescontainer .formulacheck-param-header-columns .header-max {
+    /* Takes equal, smaller space for min/max inputs, aligning them right */
+    flex: 0 0 100px; /* Fixed width to match input size */
+    text-align: center;
+}
+
+
+/* --- Fix for the form groups (the rows of inputs) to ensure they also align --- */
+
+/* Target the element area of the form groups to apply flex */
+#id_submissiontypescontainer .fitem.fgroup .felement {
+    display: flex;
+    gap: 10px; /* Space between the inputs */
+    padding-right: 5px; 
+}
+
+/* Adjust the width of the input fields within the group */
+#id_submissiontypescontainer .fitem.fgroup input[type="text"] {
+    /* The label input should take the remaining space */
+    flex: 1 1 auto;
+}
+
+#id_submissiontypescontainer .fitem.fgroup input[name*="_min_p"],
+#id_submissiontypescontainer .fitem.fgroup input[name*="_max_p"] {
+    /* The min/max inputs should have a fixed width to match the header */
+    flex: 0 0 100px; 
+}

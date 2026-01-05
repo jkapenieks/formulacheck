@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLDB PATH="mod/assign/submission/formulacheck/db" VERSION="2025092402" COMMENT="Formulacheck submission data">
+  <TABLES>
+    <TABLE NAME="assignsubmission_formulacheck" COMMENT="Stores 5 params + student result + validity">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="assignment" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="assign id"/>
+        <FIELD NAME="submission" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="assign_submission id"/>
+        <FIELD NAME="p1" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p2" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p3" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p4" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p5" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p6" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p7" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p8" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p9" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="p10" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="studentresult" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="expectedresult" TYPE="number" LENGTH="20" DECIMALS="10"/>
+        <FIELD NAME="isvalid" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="submission_fk" TYPE="foreign" FIELDS="submission" REFTABLE="assign_submission" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="assignment_idx" UNIQUE="false" FIELDS="assignment"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>
