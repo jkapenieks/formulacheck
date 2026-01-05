@@ -224,6 +224,7 @@ class assign_submission_formulacheck extends assign_submission_plugin {
         return true;
     }
 
+    
 
     public function is_empty(stdClass $submission) { global $DB; return !$DB->record_exists('assignsubmission_formulacheck', ['submission'=>$submission->id]); }
 
